@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/mongoose/schemas/user.ts","./src/routes/authroutes.ts","./src/routes/index.ts","./src/startegies/local-strategy.ts","./src/utils/helpertypes.ts","./src/utils/helpers.ts","./src/utils/validationschema.ts"],"version":"5.7.2"}
