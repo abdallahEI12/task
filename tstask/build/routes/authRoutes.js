@@ -52,4 +52,21 @@ router.get("/status", (request, response) => {
     console.log("inside the status endpoint");
     response.status(200).send((_a = request.session.passport) === null || _a === void 0 ? void 0 : _a.user);
 });
+router.post("/logout", (request, response) => {
+    // logout using passport
+    request.logout((err) => {
+        if (err) {
+            console.error("Logout error:", err);
+            response.status(500).send({ error: "Failed to log out" });
+        }
+        console.log("proceeding to destroy the session - request.logout() failed-");
+        request.session.destroy((destroyErr) => {
+            if (destroyErr) {
+                console.error("Session destruction error:", destroyErr);
+                response.status(500).send({ error: "Failed to destroy session" });
+            }
+            response.status(200).send({ message: "Logged out successfully" });
+        });
+    });
+});
 exports.authRouter = router;
